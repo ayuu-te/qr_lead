@@ -1,6 +1,6 @@
 ## What
 
-**It is the only QR generator you'll ever need.**  
+**the only QR generator you'll ever need.**  
 From basic QR generation to advanced features like:
 
 - Dynamic links  
@@ -9,17 +9,51 @@ From basic QR generation to advanced features like:
 
 All packed in one seamless tool.
 
----
 
 ## Why
 
 On **24th May 2025**, I was organizing a tech event.  
 During the closing notes, I thought it would be helpful to display the social links of our **speakers and sponsors** on the screen, so the audience could easily access them.
 
-But I hit a roadblock — I couldn’t find a **free QR generator** that fit all my needs.
+But but — I couldn’t find a **free QR generator** that fit all my needs.
 
-So yaa, here I am **making?made my own**.
+So yaa, here I am **making/made my own**.
 
+## basic Info 
+<p align="right"><sub>26th May 2025</sub></p>
+
+QR codes (Quick Response codes) are two-dimensional barcodes that store information in a grid of black and white squares. They are designed to be scanned quickly by digital devices, such as smartphone cameras, and can hold much more data than traditional one-dimensional barcodes. And thre is a catch. There are of two types.
+
+- ### Static Qr
+```
+They are permanent and uneditable once created. They always point to the same content or URL, making them ideal for simple, one-time use cases.
+
+or
+
+in simple terms the code stores data directly in their pattern—like URLs, text, or contacts. When scanned, they lead straight to the content without redirect link.
+
+    your link -> Qr holds your link in binary form by making patterns.
+```
+- ### Dynamic Qr
+```
+it lets you update the content anytime without changing the code itself, making them perfect for evolving or long-term campaigns.
+
+or
+
+in simple terms the qr do not store info directly in the pattern. The code use a short URL that redirects to the final content (like a website, PDF, or app). This makes them editable anytime, unlike static codes that store data directly.
+
+
+    Your link/data -> some storage -> link of that address in the qr
+
+Think of this like using Google Drive, where you can share the folder link to anyone and have the access to manipulate data lately.
+```
+
+## project_under_progress
+<p align="right"><sub>26th May 2025</sub></p>
+
+    started on 25th May 2025
+
+Whenever I will be updating my project, I will mention why I did that and when. For example - this section got added on 26th, hence you can see the same under the heading. 25th May 2025 is the 0 of our number line
 
 - ## Timeline(2025)
     - ### 24th May - ran into the problem
@@ -28,3 +62,27 @@ So yaa, here I am **making?made my own**.
         - should be dynamic - can be edited even when the qr is generated.
         - traffic monitoring.
         - auto-detects link type and suggests optimal display.
+        <br>
+    - ### 26th May - building basic qr
+        <p align="right"><sub>26th May 2025</sub></p>
+
+        ```
+        At first I thought it is going to be simple but aahaa, its life.
+        Decided to write the logic using python and got into Moral dilemma.
+
+        In order to create the qr there exist two most prominent libraries. 
+            1. qrcode -> fast
+                         got dependencies (needs [pillow]PIL)
+                         output format is PNG
+                         and supports logo embedding
+            1. segno -> faster
+                         no dependencies (pure python)
+                         output formats are PNG, SVG and PDF
+                         does not support logo embedding
+
+        After doing some study study, I decided to go with segno as for dynamic QR code creation, especially in web apps or any context where you need to generate and serve QR code images on demand, segno offers more flexibility, easier integration, and a broader range of output formats with less overhead.
+
+        Though the most important aspect is not the QR code library itself, but how you design the backend and the way you generate and serve the QR codes. I mentined it because I got carried away while doing so 🙌😗. 
+
+        CONCLUSION :- I decided to go with dynamic qr creation only, wont be thinkinng about the static from now
+        ```
