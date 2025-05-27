@@ -86,3 +86,20 @@ Whenever I will be updating my project, I will mention why I did that and when. 
 
         CONCLUSION :- I decided to go with dynamic qr creation only, wont be thinkinng about the static from now
         ```
+
+    - ### 27th May - making up th Ui
+    <p align="right"><sub>27th May 2025</sub></p>
+    
+    ```
+    though the things were working good, still I decided to give it a Ui 
+    used tkinter for that (another python library )
+
+    so here are the changes and improvements we made to our QR code generator
+        Added Output Format Selection -> Users can now choose the file format
+        Added a Scale Slider for QR Size -> its self explanatory I guess
+        Improved User Experience and Error Handling -> fixed the collapsing issue 
+
+    enhanced the QR code generator by introducing several user-friendly features and improvements. Most notably, we added the ability for users to choose the output file format—such as PNG, SVG, JPG, or BMP—through a graphical file save dialog, eliminating the need to manually type file extensions and reducing the risk of errors.
+    Also replaced the manual entry of the QR code scale with a slider, making it much easier and more intuitive for users to select the desired size visually. Additionally, improved the overall user experience by implementing robust handling and clear feedback messages, ensuring that the application responds to user actions like canceling the file dialog or encountering invalid input.
+        
+    ```
