@@ -1,0 +1,91 @@
+/* Light gradient background and font setup */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f7f8fc, #e3f2fd);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 40px;
+}
+
+/* Main container */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    color: #1976d2;
+}
+
+/* Form styling */
+form label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+input[type="text"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+/* Button styling */
+button {
+    background-color: #1976d2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1565c0;
+}
+
+/* Image preview */
+img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Download link */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #1976d2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

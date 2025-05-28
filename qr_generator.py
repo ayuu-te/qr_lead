@@ -1,3 +1,4 @@
+'''
 import segno
 from PIL import Image, ImageTk
 import tkinter as tk
@@ -108,3 +109,4 @@ qr_label = tk.Label(root)
 qr_label.grid(row=7, column=0, columnspan=3, pady=10)
 
 root.mainloop()
+'''

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+    <h2>Dynamic QR Code Generator</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Data/URL: <input type="text" name="data" required></label><br><br>
+        <label>Scale: <input type="range" name="scale" min="2" max="20" value="10"></label><br><br>
+        <label>Foreground: <input type="text" name="dark" value="black"></label><br><br>
+        <label>Background: <input type="text" name="light" value="white"></label><br><br>
+        <label>Error Correction:
+            <select name="error">
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="Q">Q</option>
+                <option value="H" selected>H</option>
+            </select>
+        </label><br><br>
+        <label>Logo (optional): <input type="file" name="logo" accept="image/*"></label><br><br>
+        <label>File Format:
+            <select name="filetype">
+                <option value="png" selected>PNG</option>
+                <option value="svg">SVG</option>
+                <option value="jpg">JPG</option>
+                <option value="bmp">BMP</option>
+            </select>
+        </label><br><br>
+        <button type="submit">Generate QR Code</button>
+    </form>
+
+    {% if qr_path %}
+        <h3>Preview:</h3>
+        <img src="{{ qr_path }}" width="200" height="200"><br>
+        <a href="{{ url_for('download', filename=qr_path) }}">Download QR Code</a>
+    {% endif %}
+    </div>
+</body>
+</html>
