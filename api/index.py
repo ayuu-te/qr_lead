@@ -1,5 +1,7 @@
-from app import app as flask_app
+from flask import Flask, render_template
 
-# Required handler for Vercel
-def handler(environ, start_response):
-    return flask_app(environ, start_response)
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
