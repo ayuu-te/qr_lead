@@ -136,3 +136,11 @@ Whenever I will be updating my project, I will mention why I did that and when. 
 
     Here is the learning, the quicker you fix your code, the more resources you save.
     ```
+    - ### 30th May - setting up flask
+    <p align="right"><sub>30th May 2025</sub></p>
+    
+    ```
+    thought to add bulk printing functionality. 
+    The use case is to upload the csv file in order to print br code stickers.
+    This will speed up the process of generation qr for product stickers, event attendees.
+    ```
