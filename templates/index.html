@@ -5,133 +5,37 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<style>
-
-    /* Light gradient background and font setup */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #f7f8fc, #e3f2fd);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding-top: 40px;
-}
-
-/* Main container */
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 500px;
-}
-
-/* Headings */
-h2 {
-    text-align: center;
-    color: #1976d2;
-}
-
-/* Form styling */
-form label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: 500;
-    color: #333;
-}
-
-input[type="text"],
-input[type="file"],
-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 15px;
-}
-
-input[type="range"] {
-    width: 100%;
-}
-
-/* Button styling */
-button {
-    background-color: #1976d2;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #1565c0;
-}
-
-/* Image preview */
-img {
-    display: block;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Download link */
-a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #1976d2;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-</style>
-
 <body>
     <div class="container">
-    <h2>Dynamic QR Code Generator</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <label>Data/URL: <input type="text" name="data" required></label><br><br>
-        <label>Scale: <input type="range" name="scale" min="2" max="20" value="10"></label><br><br>
-        <label>Foreground: <input type="text" name="dark" value="black"></label><br><br>
-        <label>Background: <input type="text" name="light" value="white"></label><br><br>
-        <label>Error Correction:
-            <select name="error">
-                <option value="L">L</option>
-                <option value="M">M</option>
-                <option value="Q">Q</option>
-                <option value="H" selected>H</option>
-            </select>
-        </label><br><br>
-        <label>Logo (optional): <input type="file" name="logo" accept="image/*"></label><br><br>
-        <label>File Format:
-            <select name="filetype">
-                <option value="png" selected>PNG</option>
-                <option value="svg">SVG</option>
-                <option value="jpg">JPG</option>
-                <option value="bmp">BMP</option>
-            </select>
-        </label><br><br>
-        <button type="submit">Generate QR Code</button>
+    <h2>Single QR Code Generator</h2>
+    <form method="post" enctype="multipart/form-data">
+        Data/URL: <input name="data" type="text" required><br>
+        Scale: <input name="scale" type="number" value="10" min="2" max="20"><br>
+        Foreground Color: <input name="dark" type="text" value="black"><br>
+        Background Color: <input name="light" type="text" value="white"><br>
+        Error Correction: 
+        <select name="error">
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="Q">Q</option>
+            <option value="H" selected>H</option>
+        </select><br>
+        Output Format:
+        <select name="filetype">
+            <option value="png" selected>PNG</option>
+            <option value="jpg">JPG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="bmp">BMP</option>
+            <option value="svg">SVG</option>
+        </select><br>
+        Logo (optional): <input type="file" name="logo" accept="image/*"><br>
+        <input type="submit" value="Generate QR">
     </form>
-
+    <a href="/bulk">Bulk QR Code Generator (CSV Upload)</a>
     {% if qr_path %}
-        <h3>Preview:</h3>
-        <img src="{{ qr_path }}" width="200" height="200"><br>
-        <a href="{{ url_for('download', filename=qr_path) }}">Download QR Code</a>
+        <h3>Your QR Code:</h3>
+        <img src="/{{ qr_path }}" alt="QR Code" style="max-width:300px;"><br>
+        <a href="{{ url_for('download', filename=qr_path) }}">Download</a>
     {% endif %}
     </div>
 </body>

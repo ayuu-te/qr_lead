@@ -3,6 +3,9 @@ from PIL import Image
 import segno
 import os
 import uuid
+import csv
+import zipfile
+from io import BytesIO
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/temp'
@@ -10,6 +13,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    qr_path = None
     if request.method == 'POST':
         data = request.form['data']
         scale = int(request.form['scale'])
@@ -43,15 +47,60 @@ def index():
                 img.save(filename)
                 os.remove(temp_file)
 
-            return render_template('index.html', qr_path=filename)
+            qr_path = filename
         except Exception as e:
             return f"Error: {e}", 500
 
-    return render_template('index.html')
+    return render_template('index.html', qr_path=qr_path)
 
 @app.route('/download/<path:filename>')
 def download(filename):
     return send_file(filename, as_attachment=True)
+
+@app.route('/bulk', methods=['GET', 'POST'])
+def bulk():
+    if request.method == 'POST':
+        file = request.files.get('csvfile')
+        if not file or not file.filename.endswith('.csv'):
+            return "Please upload a valid CSV file.", 400
+
+        # Prepare a folder for bulk QR images
+        bulk_folder = os.path.join(UPLOAD_FOLDER, 'bulk')
+        os.makedirs(bulk_folder, exist_ok=True)
+        qr_files = []
+
+        # Read CSV and generate QR codes
+        reader = csv.DictReader(file.read().decode('utf-8').splitlines())
+        for row in reader:
+            data = row.get('data') or row.get('url') or row.get('URL')
+            if not data:
+                continue
+            unique_id = uuid.uuid4().hex
+            filename = f"{bulk_folder}/qr_{unique_id}.png"
+            qr = segno.make_qr(data)
+            qr.save(filename, scale=10, dark='black', light='white')
+            qr_files.append(filename)
+
+        # Create a ZIP file in memory
+        zip_buffer = BytesIO()
+        with zipfile.ZipFile(zip_buffer, 'w') as zipf:
+            for file_path in qr_files:
+                zipf.write(file_path, os.path.basename(file_path))
+        zip_buffer.seek(0)
+
+        # Optionally, clean up generated files
+        for file_path in qr_files:
+            os.remove(file_path)
+
+        return send_file(
+            zip_buffer,
+            mimetype='application/zip',
+            as_attachment=True,
+            download_name='bulk_qrcodes.zip'
+        )
+
+    # GET request: Show upload form
+    return
 
 if __name__ == '__main__':
     app.run(debug=True)
