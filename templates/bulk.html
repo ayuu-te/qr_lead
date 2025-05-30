@@ -1,0 +1,18 @@
+<!-- templates/bulk.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bulk QR Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulkstyle.css') }}">
+
+</head>
+<body>
+    <h2>Bulk QR Code Generator</h2>
+    <form method="post" enctype="multipart/form-data">
+        Upload CSV file: <input type="file" name="csvfile" accept=".csv"><br>
+        <input type="submit" value="Generate Bulk QR">
+    </form>
+    <p>CSV must have a column named <b>data</b> or <b>url</b>.</p>
+    <a href="/">Back to Single QR Generator</a>
+</body>
+</html>

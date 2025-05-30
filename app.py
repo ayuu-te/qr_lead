@@ -100,7 +100,8 @@ def bulk():
         )
 
     # GET request: Show upload form
-    return
+    return render_template('bulk.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
