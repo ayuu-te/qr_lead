@@ -31,6 +31,66 @@
         Logo (optional): <input type="file" name="logo" accept="image/*"><br>
         <input type="submit" value="Generate QR">
     </form>
+
+    <form method="post" enctype="multipart/form-data">
+    Data Type:
+    <select id="data_type" name="data_type" onchange="showFields()">
+        <option value="url">URL/Text</option>
+        <option value="vcard">vCard</option>
+        <option value="wifi">WiFi</option>
+        <option value="email">Email</option>
+        <option value="sms">SMS</option>
+        <option value="phone">Phone</option>
+    </select><br>
+
+    <div id="url_fields">
+        Data/URL: <input name="data" type="text"><br>
+    </div>
+    <div id="vcard_fields" style="display:none;">
+        Name: <input name="vcard_name" type="text"><br>
+        Phone: <input name="vcard_phone" type="text"><br>
+        Email: <input name="vcard_email" type="text"><br>
+        Company: <input name="vcard_company" type="text"><br>
+    </div>
+    <div id="wifi_fields" style="display:none;">
+        SSID: <input name="wifi_ssid" type="text"><br>
+        Password: <input name="wifi_password" type="text"><br>
+        Security: <select name="wifi_security">
+            <option value="WPA">WPA/WPA2</option>
+            <option value="WEP">WEP</option>
+            <option value="">None</option>
+        </select><br>
+    </div>
+    <div id="email_fields" style="display:none;">
+        Email: <input name="email_addr" type="email"><br>
+        Subject: <input name="email_subject" type="text"><br>
+        Body: <input name="email_body" type="text"><br>
+    </div>
+    <div id="sms_fields" style="display:none;">
+        Phone: <input name="sms_phone" type="text"><br>
+        Message: <input name="sms_body" type="text"><br>
+    </div>
+    <div id="phone_fields" style="display:none;">
+        Phone: <input name="phone_num" type="text"><br>
+    </div>
+    <!-- ... keep the rest of your QR customization fields ... -->
+    <input type="submit" value="Generate QR">
+</form>
+
+<script>
+function showFields() {
+    var type = document.getElementById('data_type').value;
+    document.getElementById('url_fields').style.display = (type === 'url') ? '' : 'none';
+    document.getElementById('vcard_fields').style.display = (type === 'vcard') ? '' : 'none';
+    document.getElementById('wifi_fields').style.display = (type === 'wifi') ? '' : 'none';
+    document.getElementById('email_fields').style.display = (type === 'email') ? '' : 'none';
+    document.getElementById('sms_fields').style.display = (type === 'sms') ? '' : 'none';
+    document.getElementById('phone_fields').style.display = (type === 'phone') ? '' : 'none';
+}
+window.onload = showFields;
+</script>
+
+
     <a href="/bulk">Bulk QR Code Generator (CSV Upload)</a>
     {% if qr_path %}
         <h3>Your QR Code:</h3>

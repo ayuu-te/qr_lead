@@ -15,7 +15,35 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def index():
     qr_path = None
     if request.method == 'POST':
-        data = request.form['data']
+        # Corrected form data retrieval
+        data_type = request.form.get['data_type', 'url']
+        if data_type == 'url':
+            qr_data = request.form['data']
+        elif data_type == 'vcard':
+            name = request.form['vcard_name']
+            phone = request.form['vcard_phone']
+            email = request.form['vcard_email']
+            company = request.form['vcard_company']
+            qr_data = f"BEGIN:VCARD\nVERSION:3.0\nN:{name}\nFN:{name}\nORG:{company}\nTEL:{phone}\nEMAIL:{email}\nEND:VCARD"
+        elif data_type == 'wifi':
+            ssid = request.form['wifi_ssid']
+            pwd = request.form['wifi_password']
+            sec = request.form['wifi_security']
+            qr_data = f"WIFI:T:{sec};S:{ssid};P:{pwd};;"
+        elif data_type == 'email':
+            addr = request.form['email_addr']
+            subject = request.form['email_subject']
+            body = request.form['email_body']
+            qr_data = f"mailto:{addr}?subject={subject}&body={body}"
+        elif data_type == 'sms':
+            phone = request.form['sms_phone']
+            body = request.form['sms_body']
+            qr_data = f"sms:{phone}?body={body}"
+        elif data_type == 'phone':
+            phone = request.form['phone_num']
+            qr_data = f"tel:{phone}"
+        else:
+            qr_data = request.form['data']
         scale = int(request.form['scale'])
         dark = request.form['dark']
         light = request.form['light']
@@ -101,7 +129,6 @@ def bulk():
 
     # GET request: Show upload form
     return render_template('bulk.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
