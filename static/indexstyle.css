@@ -1,91 +1,122 @@
-/* Light gradient background and font setup */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Fonts and Base Reset */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+* {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #f7f8fc, #e3f2fd);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding-top: 40px;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Main container */
+/* Body Styling */
+body {
+    background: #f2f2f2;
+    color: #1a1a1a;
+    padding: 2rem;
+}
+
+/* Container */
 .container {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 500px;
+    max-width: 700px;
+    margin: auto;
+    background: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Headings */
 h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
     text-align: center;
-    color: #1976d2;
+    color: #222;
 }
 
-/* Form styling */
-form label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: 500;
-    color: #333;
+/* Form Elements */
+form {
+    margin-bottom: 2rem;
 }
 
 input[type="text"],
+input[type="number"],
+input[type="email"],
 input[type="file"],
 select {
     width: 100%;
-    padding: 10px;
+    padding: 0.75rem;
+    margin: 0.5rem 0 1rem;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 15px;
-}
-
-input[type="range"] {
-    width: 100%;
-}
-
-/* Button styling */
-button {
-    background-color: #1976d2;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #1565c0;
-}
-
-/* Image preview */
-img {
-    display: block;
-    margin: 20px auto;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 1rem;
+    transition: 0.3s ease;
 }
 
-/* Download link */
+input:focus,
+select:focus {
+    border-color: #333;
+    outline: none;
+    background: #fafafa;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #444;
+}
+
+/* Download Link */
 a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #1976d2;
+    display: inline-block;
+    margin-top: 1rem;
+    color: #000;
     text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border 0.3s;
 }
 
 a:hover {
-    text-decoration: underline;
+    border-color: #000;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="file"],
+    select {
+        font-size: 0.95rem;
+    }
+
+    input[type="submit"] {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+    }
 }
