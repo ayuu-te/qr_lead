@@ -106,41 +106,41 @@ Whenever I will be updating my project, I will mention why I did that and when. 
         ```
 
     - ### 27th May - making up th Ui
-    <p align="right"><sub>27th May 2025</sub></p>
-    
-    ```
-    though the things were working good, still I decided to give it a Ui 
-    used tkinter for that (another python library )
-
-    so here are the changes and improvements we made to our QR code generator
-        Added Output Format Selection -> Users can now choose the file format
-        Added a Scale Slider for QR Size -> its self explanatory I guess
-        Improved User Experience and Error Handling -> fixed the collapsing issue 
-
-    enhanced the QR code generator by introducing several user-friendly features and improvements. Most notably, we added the ability for users to choose the output file format—such as PNG, SVG, JPG, or BMP—through a graphical file save dialog, eliminating the need to manually type file extensions and reducing the risk of errors.
-    Also replaced the manual entry of the QR code scale with a slider, making it much easier and more intuitive for users to select the desired size visually. Additionally, improved the overall user experience by implementing robust handling and clear feedback messages, ensuring that the application responds to user actions like canceling the file dialog or encountering invalid input.
+        <p align="right"><sub>27th May 2025</sub></p>
         
-    ```
+        ```
+        though the things were working good, still I decided to give it a Ui 
+        used tkinter for that (another python library )
+
+        so here are the changes and improvements we made to our QR code generator
+            Added Output Format Selection -> Users can now choose the file format
+            Added a Scale Slider for QR Size -> its self explanatory I guess
+            Improved User Experience and Error Handling -> fixed the collapsing issue 
+
+        enhanced the QR code generator by introducing several user-friendly features and improvements. Most notably, we added the ability for users to choose the output file format—such as PNG, SVG, JPG, or BMP—through a graphical file save dialog, eliminating the need to manually type file extensions and reducing the risk of errors.
+        Also replaced the manual entry of the QR code scale with a slider, making it much easier and more intuitive for users to select the desired size visually. Additionally, improved the overall user experience by implementing robust handling and clear feedback messages, ensuring that the application responds to user actions like canceling the file dialog or encountering invalid input.
+            
+        ```
     - ### 28th May - setting up flask
-    <p align="right"><sub>28th May 2025</sub></p>
-    
-    ```
-    as stated above, I started off with a desktop-based QR Code Generator using Python’s tkinter and segno libraries. While it's great locally, I wanted to make something more accessible — something that you can use right from your browser.
+        <p align="right"><sub>28th May 2025</sub></p>
+        
+        ```
+        as stated above, I started off with a desktop-based QR Code Generator using Python’s tkinter and segno libraries. While it's great locally, I wanted to make something more accessible — something that you can use right from your browser.
 
-    So, I converted the entire app into a web-based QR generator using Flask, 
+        So, I converted the entire app into a web-based QR generator using Flask, 
 
-        Yaaaaaaaa I KNOW, ITS DUMB OF ME
-        that I spent my whole yesterday making the tkinter GUI, just to replace.
+            Yaaaaaaaa I KNOW, ITS DUMB OF ME
+            that I spent my whole yesterday making the tkinter GUI, just to replace.
 
-    But honestly, I saved my time by doing so, else I have to do that later with more no. of features. Though I am not removing the "qr_generator.py" file, instead I will be updating that too.  
+        But honestly, I saved my time by doing so, else I have to do that later with more no. of features. Though I am not removing the "qr_generator.py" file, instead I will be updating that too.  
 
-    Here is the learning, the quicker you fix your code, the more resources you save.
-    ```
+        Here is the learning, the quicker you fix your code, the more resources you save.
+        ```
     - ### 30th May - setting up flask
-    <p align="right"><sub>30th May 2025</sub></p>
-    
-    ```
-    thought to add bulk printing functionality. 
-    The use case is to upload the csv file in order to print br code stickers.
-    This will speed up the process of generation qr for product stickers, event attendees.
-    ```
+        <p align="right"><sub>30th May 2025</sub></p>
+        
+        ```
+        thought to add bulk printing functionality. 
+        The use case is to upload the csv file in order to print br code stickers.
+        This will speed up the process of generation qr for product stickers, event attendees.
+        ```
