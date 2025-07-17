@@ -1,4 +1,6 @@
 '''
+unused code
+
 import segno
 from PIL import Image, ImageTk
 import tkinter as tk
